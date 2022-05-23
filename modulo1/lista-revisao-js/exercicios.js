@@ -96,17 +96,20 @@ function classificaTriangulo(ladoA, ladoB, ladoC) {
 
 // EXERCÍCIO 10
 function retornaSegundoMaiorESegundoMenor(array) {
+    let ordenado = retornaArrayOrdenado(array)
+    return [ordenado[ordenado.length-2], ordenado[1]]
   
 }
 
+
 // EXERCÍCIO 11
 function retornaChamadaDeFilme(filme) {
-   
+   return `Venha assistir ao filme ${filme.nome}, de ${filme.ano}, dirigido por ${filme.diretor} e estrelado por ${filme.atores.join(", ")}.`
 }
 
 // EXERCÍCIO 12
 function retornaPessoaAnonimizada(pessoa) {
-   
+   return {... pessoa, nome: "ANÔNIMO"}
 }
 
 // EXERCÍCIO 13A
