@@ -45,13 +45,26 @@ function retornaNumerosParesElevadosADois(array) {
 // EXERCÍCIO 06
 function retornaMaiorNumero(array) {
   return  Math.max(...array)
-  //return maior
+  
 }
 
 // EXERCÍCIO 07
 function retornaObjetoEntreDoisNumeros(num1, num2) {
-
+    let maior
+    let menor
+    if(num1 > num2){
+        maior = num1
+        menor = num2
+    }
+    else{
+        maior = num2
+        menor = num1
+    }
+    
+    return { maiorNumero: maior, maiorDivisivelPorMenor: (maior % menor == 0), diferenca: maior - menor
+    }
 }
+
 
 // EXERCÍCIO 08
 function retornaNPrimeirosPares(n) {
