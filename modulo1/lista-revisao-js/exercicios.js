@@ -133,8 +133,16 @@ function retornaPessoasNaoAutorizadas(pessoas) {
 
 // EXERCÍCIO 14
 function retornaContasComSaldoAtualizado(contas) {
+     return contas.map((item) =>{
+         item.compras.map((item2) =>{
+             item.saldoTotal = item.saldoTotal - item2
+         })
 
+         item.compras = []
+         return item
+     })  
 }
+
 
 // EXERCÍCIO 15A
 function retornaArrayOrdenadoAlfabeticamente(consultas) {
