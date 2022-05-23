@@ -34,7 +34,12 @@ function retornaNumerosPares(array) {
 
 // EXERCÍCIO 05
 function retornaNumerosParesElevadosADois(array) {
- 
+    let pares = retornaNumerosPares(array)
+    function aoQuadrado(item){
+        return item * item
+    }
+    let quadrados = pares.map(aoQuadrado)
+    return quadrados
 }
 
 // EXERCÍCIO 06
