@@ -146,10 +146,29 @@ function retornaContasComSaldoAtualizado(contas) {
 
 // EXERCÍCIO 15A
 function retornaArrayOrdenadoAlfabeticamente(consultas) {
-  
+    return consultas.sort((a,b) =>{
+        let fa = a.nome
+        let fb = b.nome
+
+    if (fa < fb) {
+        return -1;
+    }
+    if (fa > fb) {
+        return 1;
+    }
+    return 0;
+})
 }
+
 
 // EXERCÍCIO 15B
 function retornaArrayOrdenadoPorData(consultas) {
+
+    return consultas.sort((a,b) =>{
+        return new Date(a.dataDaConsulta) - new Date(b.dataDaConsulta)
+    
+})
    
 }
+
+
