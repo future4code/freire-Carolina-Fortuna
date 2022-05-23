@@ -80,6 +80,17 @@ function retornaNPrimeirosPares(n) {
 
 // EXERCÍCIO 09
 function classificaTriangulo(ladoA, ladoB, ladoC) {
+    if(ladoA == ladoB && ladoA == ladoC && ladoB == ladoC){
+        return "Equilátero"
+    }
+
+    if((ladoA == ladoC || ladoA == ladoB || ladoB == ladoC) && (ladoA !=ladoB || ladoA != ladoC)){
+        return "Isósceles"
+    }
+
+    if(ladoA != ladoB && ladoB != ladoC && ladoA != ladoC){
+        return "Escaleno"
+    }
 
 }
 
