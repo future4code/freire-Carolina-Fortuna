@@ -33,3 +33,15 @@ footer{
 p{
     text-shadow: rgb(209, 157, 230) 4px 3px 0px;
 }
+
+table{
+    margin-left: auto;
+  margin-right: auto;
+  
+}
+
+td{ border: rgb(180, 137, 219);
+    border-radius: 1px;
+    border-style: ridge;
+
+}
