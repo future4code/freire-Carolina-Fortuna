@@ -1,0 +1,35 @@
+h1 {
+    background-color: #B4FF9F;
+}
+span {
+    background-color: #F9FFA4;
+}
+
+h2{
+    color: blueviolet;
+    text-shadow: rgb(209, 157, 230) 4px 3px 0px;
+    background-color: #FFD59E;
+}
+
+nav{
+    background: rgb(255,161,161);
+background: linear-gradient(0deg, rgba(255,161,161,1) 0%, rgba(255,195,195,1) 100%);
+}
+
+body{
+    background: rgb(249,255,164);
+background: radial-gradient(circle, rgba(249,255,164,1) 0%, rgba(255,195,195,1) 100%);
+    color: blueviolet;
+    text-align: center;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    border: 25px ridge rgba(180,255,159,0.66);
+}
+
+footer{
+    background: rgb(180,255,159);
+    background: linear-gradient(0deg, rgba(180,255,159,1) 0%, rgba(255,195,195,1) 100%);
+}
+
+p{
+    text-shadow: rgb(209, 157, 230) 4px 3px 0px;
+}

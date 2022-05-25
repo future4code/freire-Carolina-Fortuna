@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Funcionários</title>
+    <title>Vendas</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -21,13 +21,29 @@
         <a href="./historico.html">Histórico</a>
     </nav>
 
-    <h2>Funcionários</h2>
-    <!-- Crie uma lista de funcionários usando as tags que você aprendeu hoje abaixo \/ -->
-    <ul>
-        <li>Carolina Fortuna Um</li>
-        <li>Carolina Fortuna Dois</li>
-        <li>Carolina Fortuna Três</li>
-        </ul>
+    <h2>Vendas</h2>
+   <form action="">
+       <label for="nome-cliente">Nome do Cliente:</label>
+       <input type="text" name="nome-cliente">
+        <br>
+       <label for="produto">Produto</label>
+       <select name="produto">
+        <option selected="selected" value="charmander">	Charmander do Labenu</option>
+        <option value="squirtle">Squirtle do Labenu</option>
+        <option value="pikachu">Pikachu do Labenu</option>
+        <option value="jigglypuff">Jigglypuff Fofinho</option>
+        <option value="carol">Carolizer Programadora</option>
+        </select>
+        <br>
+        <label for="quatidade">Quantidade</label>
+        <input type="number">
+        <br>
+        <input type="checkbox" name="cartao" /> Cartão
+        <input type="checkbox" name="dinheiro" /> dinheiro
+        <input type="checkbox" name="pix" /> Pix
+        <br>
+        <button type="submit">Registrar</button>
+   </form>
         <footer>
             <p>Siga-nos nas redes sociais!</p>
             <img src="https://cdn-icons.flaticon.com/png/128/2504/premium/2504918.png?token=exp=1653425100~hmac=36f242dc6e36cfb73d4399d842794453" height="48" width="48"/>
