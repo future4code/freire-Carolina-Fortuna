@@ -71,13 +71,14 @@ div img {
     background-color: #2274a5;
     color: white;
     vertical-align: middle;
+    font-family: Arial, sans-serif;
     
     
 }
 
 #container-de-descricao>ol {
     padding: 15px 0px;
-    margin-top: 0px;
+    
 }
 
 #container-de-descricao>p {
