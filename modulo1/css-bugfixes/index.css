@@ -70,10 +70,20 @@ div img {
 #container-de-descricao {
     background-color: #2274a5;
     color: white;
+    vertical-align: middle;
+    
+    
 }
 
 #container-de-descricao>ol {
     padding: 15px 0px;
+    margin-top: 0px;
+}
+
+#container-de-descricao>p {
+    margin-top: 200px; 
+    display: inline-block;
+   
 }
 
 #container-para-comprar {
