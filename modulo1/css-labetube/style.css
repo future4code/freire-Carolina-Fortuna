@@ -1,7 +1,8 @@
 body{
     margin: 0px;
     background-color: rgb(252, 238, 240);
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: "Sofia", sans-serif;
+    
 }
 header{
     background-color: hotpink;
@@ -9,11 +10,13 @@ header{
     align-items: center;
     justify-content: space-between;
     color: beige;
+    width: 100%; 
     
 }
 
-header h2, input{
+header h1, input{
     margin: 20px;
+   
 }
 
 .container{
@@ -47,6 +50,7 @@ footer{
     color: beige;
     text-align: center;
     padding: 4px;
+    width: 100%;
 
 }
 
@@ -64,3 +68,33 @@ video{
     width: 600px;
     margin-top: 10px;
 }
+
+@media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    /* celulares */
+    .container{
+        display: block;
+    }
+    
+    header, footer{
+        min-width: min-content;
+    }
+    
+    header > input{
+        margin-right: 2rem;
+    }
+  
+}
+
+@media screen and (min-device-width : 481px) and (max-device-width : 800px) {
+    .container{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; 
+    }
+
+    header > input{
+        margin-right: 3rem;
+    }
+
+}
+    
