@@ -1,0 +1,47 @@
+.App {
+  text-align: center;
+ 
+  
+}
+
+.container{
+  background-color: lightcoral;
+  position: fixed;
+  bottom: 20px;
+  left: 36%;
+  flex-direction: column-reverse;
+  display: flex;
+
+
+}
+
+.user-input{
+  width: 100px;
+  
+}
+
+button{
+  width: 50px;
+}
+.text-input{
+  width: 300px;
+  
+}
+
+.messages-free{
+  
+  
+  background-color: lightpink;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
+
+}
+
+.message-user{
+  font-weight: bold;
+  text-align: left;
+}
+
+
