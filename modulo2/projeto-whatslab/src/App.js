@@ -19,17 +19,17 @@ export default class App extends React.Component{
 
   addMessage = () => {
     const oneMessage = {
-      user: this.state.inputUser,
-      text: this.state.inputText
+      user: this.state.inputUser + ':',
+      text: this.state.inputText,
     };
     const newMessagesList = [...this.state.allMessages, oneMessage];
-    this.setState({ allMessages: newMessagesList});
+    this.setState({ allMessages: newMessagesList, inputText: ""});
   };
 
 render() {
   const printMessages = this.state.allMessages.map((oneMessage) =>{
     return(
-      <div className="messages-free">
+      <div className="chat-box">
           <p className='message-user'>{oneMessage.user}</p>
           <p>{oneMessage.text}</p>
         
@@ -41,6 +41,9 @@ render() {
   return (
     <div className="App">
         <div className='container'>
+        <div> {printMessages} </div>
+        </div>
+        <div className='chat-footer'>
         <input
           className="user-input"
           placeholder='Usuário'
@@ -58,8 +61,7 @@ render() {
           onChange={this.getInputText}
         />
 
-        <button onClick={this.addMessage}>Enviar</button>
-        <div className='message-box'> {printMessages} </div>
+        <button onClick ={this.addMessage}>Enviar</button>
        
         </div>
       </div>
