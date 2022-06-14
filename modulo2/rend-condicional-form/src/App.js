@@ -12,7 +12,6 @@ export default class App extends React.Component{
     etapa: 1,
   
   };
-
  
 
 
@@ -37,15 +36,18 @@ export default class App extends React.Component{
  
     render(){
      
-    //  const mostraBotao = () =>{ if(this.state.etapa >= 4 ){
-    //     return ( <button  onClick={this.irParaProximaEtapa} >Próxima Etapa</button>) 
-    //   }}
+      let botao;
+
+      if(this.state.etapa < 4){
+        botao =       <button  onClick={this.irParaProximaEtapa} >Próxima Etapa</button>
+
+      }
       return (
     <div className="App">
       {this.renderizaEtapa()}
-      {/* {this.mostraBotao} */}
+      {botao}
      
-      <button  onClick={this.irParaProximaEtapa} >Próxima Etapa</button>
+      {/* <button  onClick={this.irParaProximaEtapa} >Próxima Etapa</button> */}
     
     </div>
     )
