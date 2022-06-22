@@ -1,0 +1,27 @@
+.App{
+ 
+  color-scheme: light dark;
+  background-color: black;
+  color: lightblue;
+  width: 50%;
+  margin: auto;
+  margin-top: 50px;
+  height: 100%;
+  justify-content: center;
+  border: 1px solid white;
+
+}
+
+.container{
+  padding: 50px;
+  margin: 50px
+}
+
+.lista-nomes{
+  display: inline-flex;
+  
+}
+
+.botao-del{
+  margin-left: 10px;
+}
