@@ -1,9 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const Botao = styled.button`
-display: none;
-`
+
 export default class Final extends React.Component{
 
     render() {
