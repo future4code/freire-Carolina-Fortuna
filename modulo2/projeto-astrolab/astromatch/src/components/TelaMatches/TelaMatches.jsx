@@ -1,57 +1,40 @@
 import React from "react";
-import Logo from './img/astromatch-logo.png'
-import coracao from './img/heart.png'
-import xis from './img/xis-preto.png'
+import coracao from './img/heart-red.png'
+import xis from './img/xis-vermelho.png'
 import cara from './img/cara.jpg'
 import styled from 'styled-components'
-import botaoMatch from './img/users-alt-free-icon-font.png'
 import { useState } from "react";
 
 
-
-
-const Logoo = styled.img`
-width: 150px;
-height:auto;
-margin-bottom: 1px;
-`
-
-const Match = styled.img`
-width: 25px;
-height: 25px;
-margin-left: 10%;
-margin-bottom: 15px;
-`
-
 const FotoPessoa = styled.img`
-  max-width: 300px;
-  max-height: 400px;
+  max-width: 25vw;
+  max-height: 380px;
   width:300px;
   height: auto;
   /* min-height:400px;
   min-width: 300px; */
   border-radius: 10px;
-  box-shadow: 5px 5px 5px #48A498;
+  box-shadow: 0px 0px 10px #48A498;
   position: relative;
-  margin-top: 15px;
+  left: 50%;
+transform: translateX(-50%);
+
+
   filter: hue-rotate(300deg);
   /* mask-image: linear-gradient(to top, rgba(0,0,0,0) 0%, red 95%);
-   -webkit-mask-image: linear-gradient(to top, (0,0,0,0)  5%, red 95%); */
+   -webkit-mask-image: linear-gradient(to top, (0,0,0,0)  5%, red 95%);  */
   
 `;
 
-const Hr = styled.hr`
-  width: 380px;
-  margin-top: -5px;
- border-color: 1px purple;
-`
+
 const Identificacao = styled.div`
- color: #f5adf5;
+ color: darkviolet;
   position: absolute;
-            top: 370px;
-            left: 14%;
+            top: 360px;
+            left: 50%;
+            transform: translateX(-50%);
   word-wrap: break-word;
-  width: 300px;
+  width: 290px;
   text-align: left;
   & span{
     display: flex;
@@ -60,47 +43,40 @@ const Identificacao = styled.div`
   & p{
     font-weight: bold;
   }`;
- const Botao = styled.img`
+
+
+ const BotaoLike = styled.img`
  width: 50px;
  height: 50px;
-
- &:hoover,
- &:focus{
-   width: 60px;
-   height: 60px;
+ filter:grayscale(100%);
+ &:hover{
+   width: 50px;
+   height: 50px;
    cursor: pointer;
-   filter: invert(100%)
+   filter: hue-rotate(180deg);
  }`;
+
+const BotaoDisLike = styled.img`
+width: 50px;
+height: 50px;
+filter:grayscale(100%);
+&:hover{
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  filter: saturate(100%);
+}`;
 
 const BotaoContainer = styled.div`
 width: 380px;
 display: flex;
 justify-content: space-around;
 margin-inline: auto;
-margin-top: 10px;
-bottom: 70px;
+
+bottom: 40px;
 position: fixed;
 `
-const Background = styled.div`
-width: 100vw;
-height:100vh;
-background:linear-gradient(blueviolet, #48A498)
 
-`
-
-const Div = styled.div`
-width: 30vw;
-height: 90vh;
-background-color: white;
-border: 1px solid black;
-border-radius: 10px;
-left:0;
-right:0;
-margin-left:auto;
-margin-right:auto;
-top:15px;
-position: absolute;
-`
 function TelaMatches() {
   const [botaoLike, setBotaoLike] = useState(false);
   const [botaoDisLike, setBotaoDisLike] = useState(false);
@@ -130,15 +106,6 @@ function TelaMatches() {
   
     return (
       <div>
-      <Background>
-      <Div>
-      <header>
-      <Logoo src= {Logo}>
-      </Logoo>
-      <Match src={botaoMatch} alt="" />
-      <Hr />
-    
-      </header>
       <FotoPessoa src= 'https://vignette.wikia.nocookie.net/logosrupaulsdragrace/images/0/03/Brooke_Lynn_Hytes.jpg/revision/latest?cb=20190124191352'/>
       <Identificacao>
       <span>
@@ -148,11 +115,10 @@ function TelaMatches() {
       <p>Para o alto e avante! Gosto de construir coisas, mas sou um pouco estourado</p>
       </Identificacao>
       <BotaoContainer>
-      <Botao src={coracao} alt="like" /*onClick={like}*/ />
-      <Botao src={xis} alt="dislike"  /*onClick={dislike}*/ />
+      <BotaoLike src={coracao} alt="like" /*onClick={like}*/ />
+      <BotaoDisLike src={xis} alt="dislike"  /*onClick={dislike}*/ />
       </BotaoContainer>
-      </Div> 
-      </Background>
+      
       </div>
     );
   }
