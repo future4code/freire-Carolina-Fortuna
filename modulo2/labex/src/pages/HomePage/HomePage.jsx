@@ -26,7 +26,7 @@ export function HomePage() {
           <video 
                 src={video} autoPlay loop muted/>
            
-              <h1>Encontre aqui a sua 
+              <h1 onClick={()=>goToListTrips(navigate)}>Encontre aqui a sua 
              
               próxima viagem espacial</h1>
               <img src={foguete} alt="foguete" onClick={()=>goToListTrips(navigate)} />

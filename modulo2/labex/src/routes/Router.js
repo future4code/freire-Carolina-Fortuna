@@ -16,7 +16,7 @@ const Router = () =>{
         <Routes>
             <Route index element = {<HomePage/>}/> 
 
-            <Route path='/trips/list' element={<ListTripsPage/>} />
+            <Route path='trips/list' element={<ListTripsPage/>} />
 
             <Route path= 'trips/application' element={<ApplicationFormPage/>} />
 

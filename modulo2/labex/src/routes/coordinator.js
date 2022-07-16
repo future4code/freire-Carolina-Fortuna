@@ -19,3 +19,9 @@ export const goToLogin = (navigate) =>{
 export const goToApplication = (navigate) =>{
     navigate('/trips/application')
 }
+
+//Login
+
+export  const goToAdmin =(navigate) =>{
+    navigate('/admin/trips/list')
+};
