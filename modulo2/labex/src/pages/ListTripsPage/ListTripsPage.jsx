@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import {useNavigate} from 'react-router-dom'
-import {goToApplication, goBack, goToLogin} from '../../routes/coordinator'
+import {goToApplication, goBack, goToLogin, goToHome} from '../../routes/coordinator'
 import {Header, Main, TripContainer, ApplicationContainer} from './styles'
 
 import marte from '../../img/planeta-marte.webp' 
@@ -23,9 +23,6 @@ useEffect(()=>{
         setTrip(response.data.trips)
         console.log(response.data.trips)
       
-       
-        
-        
     })
     .catch((error)=>{
         console.log(error.response)
@@ -65,7 +62,7 @@ console.log('lista de viagens', trip)
         
         <div>
         <Header>
-            <img src={logo} alt="labe-x" onClick={()=>goBack(navigate)} />
+            <img src={logo} alt="labe-x" onClick={()=>goToHome(navigate)} />
             <button onClick={()=>goToLogin(navigate)}>Admin</button>
         </Header>
 

@@ -1,33 +1,61 @@
 import React, { useState } from "react";
 import {useNavigate} from 'react-router-dom'
-import { useProtectedPage } from "../../hooks/useProtectedPage";
+
 import { useEffect } from "react";
-import { goToLogin, goBack } from "../../routes/coordinator";
+import { goToLogin, goBack, goToHome } from "../../routes/coordinator";
 import {Header, Main} from '../ListTripsPage/styles'
 import { ApplicationForm } from "../ApplicationFormPage/styles";
 import logo from '../../img/logo.png'
+import axios from "axios";
 
 export function CreateTripPage (){
 
-         const navigate = useNavigate()
-        // useEffect=(() =>{
-        //     const token = localStorage.getItem('token');
-        //     if( token === null){
-        //         goToLogin(navigate)
-        //     }
-        // },[navigate])
+    const navigate = useNavigate()
+
+    useEffect(()=>{
+        const token = localStorage.getItem('token');
+        if( token === null){
+            goToLogin(navigate)}
+    })
+
     const [form, setForm] = useState({
-        name:'', planet:'', date:'', description:'', duration: 0})
+        name:'', planet:'', date:'', description:'', durationInDays: Number(0)})
 
     const onChange = (event)=>{
         setForm({...form,[event.target.name]: event.target.value})
     }
+
+    
+    const submitTrip = (event) =>{
+        const token = localStorage.getItem('token');
+        const url = 'https://us-central1-labenu-apis.cloudfunctions.net/labeX/carolina-fortuna/trips'
+        
+        const body= form;
+      
+        event.preventDefault()
+        axios.post(url, {headers:{'Content-Type': 'application/json', auth: token}}, body)
+        .then((response)=>{
+    
+            console.log(response)  
+            alert('Viagem criada')
+    
+        })
+        .catch((error)=>{
+            console.log(error.response.data)
+           
+            console.log(body,token)
+        
+            alert(error.response.data.message)
+
+        })
+    }
+
     
     return(
         <div>
       
       <Header>
-                <img src={logo} alt="labe-x" onClick={()=>goBack(navigate)} />
+                <img src={logo} alt="labe-x" onClick={()=>goToHome(navigate)} />
                 <button onClick={()=>goToLogin(navigate)}>Logout</button>
             </Header>
 <Main>
@@ -35,8 +63,8 @@ export function CreateTripPage (){
     <ApplicationForm>
     <center>
     <h1>Nova Viagem</h1>
-<form >
-{/* onSubmit={} */}
+<form  onSubmit={submitTrip}    >  
+
     <input
         name="name"
         value={form.name}
@@ -44,14 +72,14 @@ export function CreateTripPage (){
         placeholder='Nome'
         required
         type='text'
-        pattern={'^.{5,}'}
+        pattern={'^.{3,}'}
         title='Insira um nome com no mínimo 5 letras'
     />
     <br />
     <select 
     name="planet"
-    value={form.planet}
     onChange={onChange}
+    value={form.planet}
     required>
         <option value="Mercúrio">Mercúrio</option>
         <option value="Vênus">Vênus</option>
@@ -77,17 +105,17 @@ export function CreateTripPage (){
         onChange={onChange}
         placeholder='Descrição'
         required
-        pattern={"^.{30,}"}
+        // pattern={'[a-zA-Z]{30,}'}
         title='Escreva uma descrição com mais de 30 letras'
     />
     <br />
     <input type="number" 
-        name="duration" 
+        name="durationInDays" 
         value={form.duration}
         placeholder="Duração (em dias)"
         onChange={onChange}
         required 
-        pattern={"^.[5-9][0-9]"}
+        min={50}
         title='A duração deve ser maior que 50 dias '
     />
     <br />
