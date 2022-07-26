@@ -1,20 +1,23 @@
 
 import { roseColor, orangeColor, blueColor, greenColor } from './colors';
-import { createTheme } from '@material-ui/core/styles';
+import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
   palette: {
     primary: {
      
-      main: {roseColor},
+      main: roseColor,
       contrasText: 'white'
    
     },
-    text:{
-        main: 'black'
-    },
+  
     secondary: {
-        main: {orangeColor}
+        main: orangeColor,
+        contrasText: 'white'
+    },
+
+    white: {
+        main:'white'
     },
     // Used by `getContrastText()` to maximize the contrast between
     // the background and the text.
