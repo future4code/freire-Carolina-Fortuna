@@ -8,8 +8,8 @@ export const goToSignUp = (navigate) =>{
    }
 
 
-export const goToPostDetail = (navigate) =>{
- navigate('/post/:id')
+export const goToPostDetail = (navigate,id) =>{
+ navigate(`/post/${id}`)
 }
 
 export const goFeed = (navigate) =>{
