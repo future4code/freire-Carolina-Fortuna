@@ -8,11 +8,12 @@ import downVote from  '../../assets/downVote.png'
 import Header from "../../components/Header/Header";
 import { WriteComment } from "./WriteComment";
 
+import { vote} from "../../services/votes";
+
 export const PostDetailPage = () => {
     const params = useParams()
     const comments = useRequestData([], `${BASE_URL}/posts/${params.id}/comments`)
    
-
 
 
     // console.log(comments)
@@ -20,16 +21,16 @@ export const PostDetailPage = () => {
 
     const commentCards = comments.map((item)=>{
         return(
-            <div key={item.id}>
+            <div id={item.id}>
             <p>enviado por {item.username} </p>
          
             <p>{item.body}</p>
             
             <div>
                 <div>
-                    <img src={upVote} alt="" />
+                    <img src={upVote} alt="like"  onClick= {()=>vote(item.id,'comment', 1)} />
                     <p>{item.voteSum}</p>
-                    <img src={downVote} alt="" />
+                    <img src={downVote} alt="dislike" onClick= {()=>vote(item.id,'comment',-1)}/>
                 </div>
             </div>
         </div>

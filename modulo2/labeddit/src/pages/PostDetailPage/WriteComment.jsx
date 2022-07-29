@@ -1,33 +1,26 @@
-import { create } from "@mui/material/styles/createTransitions";
-import React from "react";
 
-
+import React, { useState } from "react";
 import useForm from '../../hooks/useForm'
-
 import { createComment } from "../../services/comments";
 
 
-export const WriteComment = () => {
+export const WriteComment = (props) => {
 
 
     const [form, onChange, clear] = useForm({body:''})
-    const onSubmitPost = (event) =>{
+    
+    const onSubmitComment = (event) =>{
         event.preventDefault()
         console.log(form)
-        createComment(form, clear, id)
-      
+        createComment(form, clear, props.id)    
     }
 
     
     return(
        <div>
           
-          
-           
-           <form onSubmit={onSubmitPost}>
-         
-
-        
+           <form onSubmit={onSubmitComment}>
+             
             <input type="text" 
             placeholder="Escreva seu comentário..."
             value={form.body}

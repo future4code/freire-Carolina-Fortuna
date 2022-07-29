@@ -3,23 +3,23 @@ import {colorRose} from '../../constants/colors'
 
 export const Background = styled.div`
 width: 100vw;
-height:100vh;
-background:linear-gradient(orange, hotpink, grey);
+height: max-content;
+background: white;
+
 
 `
 
 export const Div = styled.div`
-width: 300px;
-min-height: 95vh;
-height: fit-content;
+width: 100vw;
+min-height: 100vh;
+height: 100vh;
 background-color: white;
-border: 1px solid black;
-border-radius: 10px;
+
 left:0;
 right:0;
 margin-left:auto;
 margin-right:auto;
-top:15px;
+top:0px;
 position: absolute;
 overflow-x: hidden;
 overflow-y: auto;

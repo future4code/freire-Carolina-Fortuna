@@ -1,10 +1,13 @@
-import { create } from "@mui/material/styles/createTransitions";
-import React from "react";
+
+import React, { useState } from "react";
 
 
 import useForm from '../../hooks/useForm'
 
 import { createPost } from "../../services/posts";
+import { InputText, InputTitle } from "./styles";
+import { Button } from "../../components/Button/styles";
+import { Hr } from "../../components/Hr/styles";
 
 
 export const WritePost = () => {
@@ -15,7 +18,7 @@ export const WritePost = () => {
         event.preventDefault()
         console.log(form)
         createPost(form, clear)
-      
+       
     }
 
     
@@ -23,11 +26,11 @@ export const WritePost = () => {
        <div>
           
           
-    
+    <center>
            <form onSubmit={onSubmitPost}>
          
 
-            <input type="text" 
+            <InputTitle type="text" 
             placeholder="Título" 
             value={form.title}
             onChange={onChange}
@@ -37,7 +40,7 @@ export const WritePost = () => {
             />
             
             <br />
-            <input type="text" 
+            <InputText type="text" 
             placeholder="Escreva seu post..."
             value={form.body}
             onChange={onChange}
@@ -46,10 +49,10 @@ export const WritePost = () => {
             />
             <br />
             
-            <button type="sumbit">Postar</button>
+            <Button type="sumbit">Postar</Button>
             </form>
-         
-          
+         <Hr/>
+            </center>
        </div>
     )
 }

@@ -5,7 +5,8 @@ import { goToSignUp } from "../../routes/coordinator";
 import { useNavigate } from "react-router-dom";
 import {login} from '../../services/users'
 import useUnprotectedPage from "../../hooks/useUnprotectedPage";
-
+import { Button } from "../../components/Button/styles";
+import { Hr } from "../../components/Hr/styles";
 
 export const LoginPage = () => {
  useUnprotectedPage()
@@ -40,9 +41,9 @@ export const LoginPage = () => {
             required
             />
             <br />
-            <button type="sumbit">Continuar</button>
+            <Button type="sumbit">Continuar</Button>
         </form>
-        <hr />
+        <Hr />
         <button onClick={()=>goToSignUp(navigate)}>Crie uma conta!</button>
         </center>
         </div>

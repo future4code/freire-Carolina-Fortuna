@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+
 import useProtectedPage from '../../hooks/useProtectedPage'
 import Header from '../../components/Header/Header'
-import {getPosts} from '../../services/posts'
+
 import {PostCard} from './PostCard'
 import useRequestData from '../../hooks/useRequestData'
 import { BASE_URL } from '../../constants/urls'
@@ -11,6 +11,9 @@ import comment from  '../../assets/comment.png'
 import WritePost from './WritePost'
 import { goToPostDetail } from '../../routes/coordinator'
 import { useNavigate } from 'react-router-dom'
+import { Card, CommentsDiv, VotesDiv, FlexDiv } from './styles'
+import { vote } from '../../services/votes'
+import { style } from '@mui/system'
 
 
 export const FeedPage = () =>{
@@ -18,9 +21,12 @@ export const FeedPage = () =>{
 useProtectedPage()
 const posts = useRequestData([], `${BASE_URL}/posts`)
 console.log(posts)
-// useEffect(()=>{
-//     getPosts()
-// },[])
+
+
+
+
+
+
 const onClickComment =(id)=>{
 goToPostDetail(navigate, id)
 
@@ -28,24 +34,26 @@ goToPostDetail(navigate, id)
 }
 const postCards = posts.map((item)=>{
     return(
-        <div key={item.id}>
+        <center>
+        <Card key={item.id}>
         <p>enviado por {item.username} </p>
         <h1>{item.title}</h1>
-        <p>{item.body}</p>
+        <h2>{item.body}</h2>
         
-        <div>
-            <div>
-                <img src={upVote} alt="" />
+        <FlexDiv>
+            <VotesDiv>
+                <img src={upVote}  onClick= {()=>vote(item.id,'posts', 1)} alt="like" />
                 <p>{item.voteSum}</p>
-                <img src={downVote} alt="" />
-            </div>
+                <img src={downVote}  onClick= {()=>vote(item.id, 'posts', -1)} alt="dislike" />
+            </VotesDiv>
 
-            <div>
-                <img src={comment} alt="" onClick={()=>onClickComment(item.id)} />
+            <CommentsDiv>
+                <img src={comment} alt="comentário" onClick={()=>onClickComment(item.id)} />
                 <p>{item.commentCount}</p>
-            </div>
-        </div>
-    </div>
+            </CommentsDiv>
+        </FlexDiv>
+    </Card>
+    </center>
     )
 })
 
@@ -53,7 +61,7 @@ const postCards = posts.map((item)=>{
         <div>
         <Header/>
         <WritePost/>
-        <p>Feed</p>
+    
         {postCards}
         </div>
     )
