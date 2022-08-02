@@ -4,12 +4,16 @@ import Header from "../../components/Header/Header";
 import useForm from '../../hooks/useForm'
 import useUnprotectedPage from "../../hooks/useUnprotectedPage";
 import { signUp } from "../../services/users";
+import { Input } from "../../components/Input/styles";
+import { RoundButton } from "../../components/RoundButton/styles";
+import { H1 , PolicyContainer} from "./styles";
+
 
 
 export const SignUpPage = () => {
     useUnprotectedPage()
     const navigate = useNavigate()
-    const [form, onChange, clear] = useForm({userName:'', email:'', password:''})
+    const [form, onChange, clear] = useForm({username:'', email:'', password:''})
     const onSubmitForm = (event) =>{
         event.preventDefault()
         console.log(form)
@@ -23,21 +27,22 @@ export const SignUpPage = () => {
            <Header/>
           
            <center>
-           <h1>Olá, boas vindas ao Labeddit</h1>
-           <form onSubmit={onSubmitForm}>
-         
 
-            <input type="text" 
-            placeholder="Nome" 
-            value={form.userName}
+           
+           <H1>Olá, boas vindas ao Labeddit ;)</H1>
+           <form onSubmit={onSubmitForm}>
+        
+            <Input type="text" 
+            placeholder="Nome de usuário" 
+            value={form.username}
             onChange={onChange}
-            name='userName'
+            name='username'
             required
             
             />
             
             <br />
-            <input type="email" 
+            <Input type="email" 
             placeholder="E-mail"
             value={form.email}
             onChange={onChange}
@@ -45,7 +50,7 @@ export const SignUpPage = () => {
             required
             />
             <br />
-            <input type="password" 
+            <Input type="password" 
             name="password" 
             placeholder="Senha" 
             value={form.password}
@@ -55,7 +60,14 @@ export const SignUpPage = () => {
             title='Senha deve possuir no mínimo 8 e no máximo 30 caracteres'
             />
             <br />
-            <button type="sumbit">Cadastrar</button>
+            <PolicyContainer>
+            <p>Ao continuar você concorda com o nosso contrato de usuário e a nossa Política de privacidade </p>
+            <div className="checkbox">
+            <input type='checkbox'/>
+            <p>Eu concordo em receber e-mails sobre coisas legais no Labeddit</p>
+            </div>
+            </PolicyContainer>
+            <RoundButton type="sumbit">Cadastrar</RoundButton>
             </form>
             </center>
           

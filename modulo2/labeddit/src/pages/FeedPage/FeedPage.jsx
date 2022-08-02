@@ -36,8 +36,7 @@ const postCards = posts.map((item)=>{
     return(
         <center>
         <Card key={item.id}>
-        <p>enviado por {item.username} </p>
-        <h1>{item.title}</h1>
+        <p>enviado por {item.username} </p> 
         <h2>{item.body}</h2>
         
         <FlexDiv>

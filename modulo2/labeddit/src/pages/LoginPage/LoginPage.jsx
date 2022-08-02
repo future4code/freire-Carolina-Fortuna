@@ -5,8 +5,11 @@ import { goToSignUp } from "../../routes/coordinator";
 import { useNavigate } from "react-router-dom";
 import {login} from '../../services/users'
 import useUnprotectedPage from "../../hooks/useUnprotectedPage";
-import { Button } from "../../components/Button/styles";
+import { RoundButton } from "../../components/RoundButton/styles";
 import { Hr } from "../../components/Hr/styles";
+import { OutlineButton, LogoContainer } from "./styles";
+import { Input } from "../../components/Input/styles";
+
 
 export const LoginPage = () => {
  useUnprotectedPage()
@@ -19,12 +22,16 @@ export const LoginPage = () => {
  }
     return(<div>
         <center>
-        <img src={logo} alt="labeddit" />
-        <h2>Labeddit</h2>
+       <LogoContainer>
+        <img 
+        className="image"
+        src={logo} alt="labeddit" />
+        <h2>LabEddit</h2>
         <h4>O projeto de rede social da Labenu</h4>
+        </LogoContainer>
         
         <form onSubmit={onLogin}>
-        <input type="text" 
+        <Input type="text" 
             placeholder="E-mail" 
             value={form.email}
             onChange={onChange}
@@ -33,7 +40,7 @@ export const LoginPage = () => {
             />
          
             <br />
-            <input type="password" 
+            <Input type="password" 
             name="password" 
             placeholder="Senha" 
             value={form.password}
@@ -41,10 +48,10 @@ export const LoginPage = () => {
             required
             />
             <br />
-            <Button type="sumbit">Continuar</Button>
+            <RoundButton type="sumbit">Continuar</RoundButton>
         </form>
         <Hr />
-        <button onClick={()=>goToSignUp(navigate)}>Crie uma conta!</button>
+        <OutlineButton onClick={()=>goToSignUp(navigate)}>Crie uma conta!</OutlineButton>
         </center>
         </div>
     )
