@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Button = styled.button`
-margin: 12px;
+margin-block: 12px;
 justify-content: center;
 align-items: center;
 padding: 12px 145px;
@@ -26,5 +26,8 @@ border-style: none;
 text-align: center;
 
 color: #FFFFFF;
-
+:hover{
+    cursor: pointer;
+    box-shadow: 0px 0px 10px grey;
+}
 `

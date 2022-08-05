@@ -2,6 +2,10 @@
 import React, { useState } from "react";
 import useForm from '../../hooks/useForm'
 import { createComment } from "../../services/comments";
+import {InputText} from "../../components/InputText/styles";
+import {Button} from "../../components/Button/styles" 
+import { Hr } from "../../components/Hr/styles";
+
 
 
 export const WriteComment = (props) => {
@@ -18,10 +22,10 @@ export const WriteComment = (props) => {
     
     return(
        <div>
-          
+          <center>
            <form onSubmit={onSubmitComment}>
              
-            <input type="text" 
+            <InputText type="text" 
             placeholder="Escreva seu comentário..."
             value={form.body}
             onChange={onChange}
@@ -30,9 +34,10 @@ export const WriteComment = (props) => {
             />
             <br />
             
-            <button type="sumbit">Responder</button>
+            <Button type="sumbit">Responder</Button>
             </form>
-         
+            <Hr/>
+            </center>
           
        </div>
     )

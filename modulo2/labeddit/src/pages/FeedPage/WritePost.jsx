@@ -5,7 +5,8 @@ import React, { useState } from "react";
 import useForm from '../../hooks/useForm'
 
 import { createPost } from "../../services/posts";
-import { InputText, InputTitle } from "./styles";
+import { InputText} from "../../components/InputText/styles";
+import { InputTitle } from "./styles";
 import { Button } from "../../components/Button/styles";
 import { Hr } from "../../components/Hr/styles";
 
@@ -50,6 +51,7 @@ export const WritePost = () => {
             <br />
             
             <Button type="sumbit">Postar</Button>
+           
             </form>
          <Hr/>
             </center>

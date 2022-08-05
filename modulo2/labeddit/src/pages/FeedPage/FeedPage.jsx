@@ -11,9 +11,9 @@ import comment from  '../../assets/comment.png'
 import WritePost from './WritePost'
 import { goToPostDetail } from '../../routes/coordinator'
 import { useNavigate } from 'react-router-dom'
-import { Card, CommentsDiv, VotesDiv, FlexDiv } from './styles'
+import { Card, CommentsDiv, VotesDiv, FlexDiv } from '../../components/PostCard/styles'
 import { vote } from '../../services/votes'
-import { style } from '@mui/system'
+
 
 
 export const FeedPage = () =>{
@@ -34,7 +34,7 @@ goToPostDetail(navigate, id)
 }
 const postCards = posts.map((item)=>{
     return(
-        <center>
+       
         <Card key={item.id}>
         <p>enviado por {item.username} </p> 
         <h2>{item.body}</h2>
@@ -52,16 +52,18 @@ const postCards = posts.map((item)=>{
             </CommentsDiv>
         </FlexDiv>
     </Card>
-    </center>
+  
     )
 })
 
     return(
         <div>
         <Header/>
+        <center>
         <WritePost/>
     
         {postCards}
+        </center>
         </div>
     )
 } 

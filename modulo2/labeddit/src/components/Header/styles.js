@@ -7,6 +7,7 @@ export const HeaderBar = styled.div`
    
     background: #EDEDED;
     display: flex;
+    justify-content: space-around;
 
 
 & img {
@@ -29,10 +30,15 @@ export const HeaderBar = styled.div`
     line-height: 25px;
     text-align: center;
     color: #4088CB;
-    margin-left: 200px; 
+    position: absolute;
+    top: 10px;
+    right: 7%;
+    :hover{
+        cursor: pointer;
+    }
 
-    @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    /* @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
         margin-left: 80%;
-}
+} */
 }
 `
