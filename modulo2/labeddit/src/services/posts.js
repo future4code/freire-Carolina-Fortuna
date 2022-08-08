@@ -24,11 +24,12 @@ export const createPost = (body, clear) =>{
         
     })
     .catch((error)=>{
-        console.log(error)
-        alert('Erro ao postar')
+        console.error(error)
+        alert('Erro ao postar, tente novamente')
         
  
     })
+
 }
 
 

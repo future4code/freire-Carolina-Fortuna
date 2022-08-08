@@ -1,11 +1,10 @@
 import styled from "styled-components";
-import {colorRose} from '../../constants/colors'
+
 
 export const Background = styled.div`
 width: 100vw;
 height: max-content;
 background: white;
-
 
 `
 

@@ -1,21 +1,35 @@
 import React from "react";
 import useForm from '../../hooks/useForm'
-import logo from '../../assets/logo.png'
-import { goToSignUp } from "../../routes/coordinator";
 import { useNavigate } from "react-router-dom";
+
+//imagem
+import logo from '../../assets/logo.png'
+
+//rota
+import { goToSignUp } from "../../routes/coordinator";
+
+//requisição axios
 import {login} from '../../services/users'
+
+//hook
 import useUnprotectedPage from "../../hooks/useUnprotectedPage";
-import { RoundButton } from "../../components/RoundButton/styles";
-import { Hr } from "../../components/Hr/styles";
+
+//componenentes e estilização
+import {Input}  from "../../components/Input/styles";
+import {Hr}  from "../../components/Hr/styles";
 import { OutlineButton, LogoContainer } from "./styles";
-import { Input } from "../../components/Input/styles";
+import { RoundButton } from "../../components/RoundButton/styles";
 
 
 export const LoginPage = () => {
- useUnprotectedPage()
- const [form, onChange, clear] = useForm({email:'', password:''})
- const navigate = useNavigate()
- const onLogin = (event) =>{
+ 
+useUnprotectedPage()
+
+const [form, onChange, clear] = useForm({email:'', password:''})
+
+const navigate = useNavigate()
+
+const onLogin = (event) =>{
      event.preventDefault()
      console.log(form)
      login(form, clear, navigate)

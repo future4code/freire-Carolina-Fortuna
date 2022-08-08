@@ -20,6 +20,9 @@ export const OutlineButton = styled.button`
 
     text-align: center;
     color: #FE7E02;
+    :hover{
+        cursor: pointer;
+    }
 `
 
 export const LogoContainer = styled.div`

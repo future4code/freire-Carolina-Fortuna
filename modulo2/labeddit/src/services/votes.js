@@ -26,8 +26,8 @@ export const vote = (id,x, direction) =>{
         console.log(response.data)      
     })
     .catch((error)=>{
-        console.log(error)
-        alert(error.message)
+        console.error(error)
+        alert('Erro ao registrar voto, tente novamente.')
     })
 }
 
@@ -52,7 +52,7 @@ export const deleteVote = (id, x) =>{
         console.log(response)      
     })
     .catch((error)=>{
-        console.log(error)
-        alert(error.message)
+        console.error(error)
+        alert('Erro ao deletar voto, tente novamente')
     })
 }

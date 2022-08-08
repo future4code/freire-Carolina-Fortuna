@@ -21,11 +21,12 @@ export const createComment = (body, clear, id) =>{
     .then((response)=>{
         console.log(response)
         clear();   
+        // pegar useRequestData()
         
     })
     .catch((error)=>{
-        console.log(error)
-        alert('Erro ao postar')
+        console.error(error)
+        alert('Erro ao comentar, tente novamente.')
         
  
     })

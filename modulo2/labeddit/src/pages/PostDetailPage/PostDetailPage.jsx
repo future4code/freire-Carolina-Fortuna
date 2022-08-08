@@ -1,68 +1,48 @@
 import React from "react";
-import useProtectedPage from '../../hooks/useProtectedPage'
 import { useParams, useNavigate } from "react-router-dom";
+
+//hooks
+import useProtectedPage from '../../hooks/useProtectedPage'
 import useRequestData from "../../hooks/useRequestData";
+
+//constante
 import { BASE_URL } from "../../constants/urls";
-import upVote from  '../../assets/upVote.png'
-import downVote from  '../../assets/downVote.png'
+
+//componentes
 import Header from "../../components/Header/Header";
-import { WriteComment } from "./WriteComment";
-import { Card, CommentsDiv, VotesDiv, FlexDiv } from '../../components/PostCard/styles'
-import { vote} from "../../services/votes";
-import comment from  '../../assets/comment.png'
+import WriteComment  from "./WriteComment";
+import PostCard from '../../components/PostCard/PostCard'
+import CommentCard from "./CommentCard";
+
+//botão 'X' para voltar ao feed
 import x from '../../assets/x.png'
 import { goFeed } from "../../routes/coordinator";
 import { Xbutton } from "./styles";
 
-export const PostDetailPage = () => {
-    const params = useParams()
-    const comments = useRequestData([], `${BASE_URL}/posts/${params.id}/comments`)
-    const posts = useRequestData([], `${BASE_URL}/posts`)
-    const navigate = useNavigate()
-    useProtectedPage()
 
-    const postCard = posts.map((item)=>{
-       if( item.id == params.id){
-        return(
-          
-           
-            <Card key={item.id}>
-            <p>enviado por {item.username} </p> 
-            <h2>{item.body}</h2>
-            
-            <FlexDiv>
-                <VotesDiv>
-                    <img src={upVote}  alt="like" />
-                    <p>{item.voteSum}</p>
-                    <img src={downVote}   alt="dislike" />
-                </VotesDiv>
+export const PostDetailPage = () => {
     
-                <CommentsDiv>
-                    <img src={comment} alt="comentário"  />
-                    <p>{item.commentCount}</p>
-                </CommentsDiv>
-            </FlexDiv>
-        </Card>
-       
-        )
-       }
+    useProtectedPage()
+   
+    const params = useParams()
+   
+    const navigate = useNavigate()
+   
+    const comments = useRequestData([], `${BASE_URL}/posts/${params.id}/comments`)
+   
+    const posts = useRequestData([], `${BASE_URL}/posts`)
+    
+ 
+    const postCard = posts.map((posts)=>{
+       if( posts.id === params.id){
+        return(
+            <PostCard post={posts}/>
+        )}
     })
 
-    const commentCards = comments.map((item)=>{
+    const commentCards = comments.map((comments)=>{
         return(
-            <Card id={item.id}>
-            <p>enviado por {item.username} </p>
-         
-            <h2>{item.body}</h2>
-            
-            <FlexDiv>
-                <VotesDiv>
-                    <img src={upVote} alt="like"  onClick= {()=>vote(item.id,'comment', 1)} />
-                    <p>{item.voteSum}</p>
-                    <img src={downVote} alt="dislike" onClick= {()=>vote(item.id,'comment',-1)}/>
-                </VotesDiv>
-            </FlexDiv>
-        </Card>
+           <CommentCard comment = {comments}/>
         )
     })
     
