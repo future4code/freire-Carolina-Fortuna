@@ -38,10 +38,12 @@ color:  #EAEAEA;
 `
 export const Main = styled.div`
 background-image:  url(${bgImage});
-height: 87.8vh;
+background-repeat: repeat;
+padding-bottom: 40px;
+height: fit-content;
 width: 100vw;
-margin-top: -18px;
-overflow: auto;
+margin-top: -23px;
+margin-bottom: 0px;;
 color: white;
 text-shadow: 0px 0px 5px #ca315f;
 

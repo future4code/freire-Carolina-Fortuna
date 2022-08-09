@@ -117,6 +117,7 @@ const optionsTrip= trips.map((item)=>{
                 required
                 pattern={"^.{30,}$"}
                 title='Seu texto deve conter mais de 30 caracteres '
+                
                 />
                 <br />
                 <input type="text" 

@@ -35,9 +35,11 @@ margin-top: 20px;
 & p{
     margin: auto;
 }
-& button{
-    margin: 5%;
-    width: 100px;
+
+`
+export const HeaderButton = styled.button`
+margin: 5%;
+    width: 120px;
     height: 40px;
     color: #ca315f;
     background-color: lightgray;
@@ -45,25 +47,44 @@ margin-top: 20px;
     border-radius: 50px;
     margin-top: auto;
     margin-bottom: auto;
-}button:hover{
+    align-content: center;
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    padding-inline: 20px;
+   
+:hover{
     cursor: pointer;
     color: lightgrey;
     background-color: #ca315f;
 }
-`
+& img{
+    height: 18px;
+    width: 18px;
+   
+}
 
+`
 
 
 export const Main = styled.div`
 font-size: x-large;
-margin: auto;
+margin-bottom: 0px;;
+overflow: hidden;
+
+height: 85vh;
+
 & h1{
     z-index: 0;
     position: absolute;
-    top: 200px;
-    left: 400px;
+
     color: #DA094A;
+    left: 0; 
+    right: 0; 
+    top: 200px;
+    bottom: 0;
     margin: auto;
+
     font-style: italic;
     line-break:auto;
     width: 600px;
@@ -74,10 +95,13 @@ margin: auto;
 & img{
     z-index: 0;
     position: absolute;
-    top: 400px;
-    left: 600px;
     height: 200px;
     width: auto;
+    left: 0; 
+    right: 0; 
+    top: 280px;
+    bottom: 0;
+    margin: auto;
     filter: grayscale(100%);
 }img:hover{
     cursor: pointer;
@@ -114,12 +138,15 @@ margin: auto;
 }
 
 & video{
-    position: relative;
+  position: relative;
   right: 0;
   bottom: 0;
-  max-width: 100vw;
-  height: auto ;
+  width: 100vw;
+  height: 85vh;
+  object-fit: cover;
   z-index: -1;
-  overflow: hidden;
+  margin-bottom:0px;
+
+
 }
 `

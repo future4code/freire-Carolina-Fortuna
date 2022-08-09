@@ -4,7 +4,8 @@ import {goToListTrips, goToLogin} from '../../routes/coordinator'
 import logo from '../../img/logo.png'
 import video from '../../img/video2.mp4'
 import foguete from '../../img/foguete.png'
-import {Header, Main} from './styles.js'
+import padlock from '../../img/padlock.png'
+import {Header, HeaderButton, Main} from './styles.js'
 
 
 
@@ -20,7 +21,7 @@ export function HomePage() {
                 <section><p>Assine já a nossa Newsletter e receba ofertas exclusivas</p>
                 <input type="email" />
                 </section>
-                <button onClick={()=>goToLogin(navigate)}>Admin</button>
+                <HeaderButton onClick={()=>goToLogin(navigate)}>Admin <img src={padlock}/></HeaderButton>
           </Header>
           <Main>
           <video 
