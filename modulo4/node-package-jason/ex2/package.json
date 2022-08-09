@@ -1,0 +1,11 @@
+{
+  "name": "ex2",
+  "version": "1.0.0",
+  "description": "calculadora simples",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "carolina fortuna",
+  "license": "ISC"
+}

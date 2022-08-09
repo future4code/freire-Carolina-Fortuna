@@ -1,0 +1,11 @@
+{
+  "name": "ex3",
+  "version": "1.0.0",
+  "description": "lista de tarefas",
+  "main": "index.js",
+  "scripts": {
+    "start" : "node index.js"
+  },
+  "author": "carolina fortuna",
+  "license": "ISC"
+}
