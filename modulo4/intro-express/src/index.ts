@@ -35,7 +35,7 @@ app.get('/posts/:id',(req,res)=>{
         if(item.userId === req.params.id){
             return item
         }
-        else return undefined
+        else return 
     })
 
     res.status(200).send(postUser)
