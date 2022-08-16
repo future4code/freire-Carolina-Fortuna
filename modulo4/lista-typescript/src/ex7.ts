@@ -20,16 +20,18 @@ const ajustaPreco = (preco :number): string => {
     const valorAjustado: string = preco.toFixed(2).replace('.', ',')
     return "R$ "+valorAjustado
 }
-const ordenaProdutos (estoque:Produto[], ajustaPreco: (preco:number)=> void):Produto[]|void => {
-  
-    estoque.map =((produto:Produto)=>{
-        ajustaPreco(produto.valorUnitario as number)
 
+const ordenaProdutos = (estoque:Produto[]):Produto[] => {
 
-
-    })
+    estoque.map ((item)=>
+        (item.valorUnitario = ajustaPreco(item.valorUnitario as number))
+    );
 
   
-
-
+    const produtosOrdenados : Produto[] = estoque.sort((a, b) => a.quantidade - b.quantidade);
+    return produtosOrdenados
 }
+
+console.log(ordenaProdutos(estoque))
+
+
