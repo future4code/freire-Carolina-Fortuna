@@ -1,0 +1,11 @@
+{
+  "name": "ex1",
+  "version": "1.0.0",
+  "description": "calcula idade daqui 7 anos",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "carolina fortuna",
+  "license": "ISC"
+}
