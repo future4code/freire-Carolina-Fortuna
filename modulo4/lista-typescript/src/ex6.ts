@@ -22,10 +22,11 @@ function filtraSaldoNegativo (clientes:Cliente[]):Cliente[]| void{
  
 	clientes.map((cliente)=>{
 
-   let soma:number =  cliente.debitos.reduce((total:number, item:number) => total + item); 
- 
-  	let diferenca:number = cliente.saldoTotal - soma
-	  if(diferenca < 0){
+   let somaDebitos:number =  cliente.debitos.reduce((total:number, item:number) => total + item, 0); 
+ console.log(somaDebitos, 'soma')
+  	cliente.saldoTotal -= somaDebitos
+
+	  if(cliente.saldoTotal < 0){
 		clientesNegativos.push(cliente)
 		
 	  }
