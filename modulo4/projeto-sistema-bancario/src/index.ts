@@ -89,7 +89,7 @@ app.patch('/conta/saldo', (req, res)=>{
         }
 
         const saldoAtualizado:Conta={
-            ... conta, saldo: + saldo
+            ... conta, saldo: conta.saldo + saldo
         }
 
         if(!saldoAtualizado){
@@ -156,8 +156,62 @@ app.patch('/conta/pagamento', (req, res)=>{
     }catch (error: any) {
         res.status(errorCode).send({ message: error.message });
     }   
-   
+})
 
+//Transferência Interna
+//seu nome, o seu CPF, o nome do destinatário, o CPF do destinatário e o valor em si. 
+
+
+app.patch('conta/transferencia',(req,res)=>{
+
+let errorCode = 400
+    try{
+        const nomePagador: string = req.query.nomePagador as string;
+        const cpfPagador:number = Number(req.query.cpfPagador);
+        const valorTransferido: number = Number(req.query.valorTransferido) 
+        const nomeDestinatario: string = req.query.nomeDestinatario as string
+        const cpfDestinatario: number = Number(req.query.cpfDestinatario)
+
+        //procurar conta do pagador
+        const contaPagador: Conta | undefined = contas.find((item) => item.nome === nomePagador && item.cpf === cpfPagador) ;
+        if (!contaPagador) {
+          errorCode = 404;
+          throw new Error("Sua conta não foi encontrada");
+        }
+
+          //procurar conta do destinatario
+          const contaDestinatario: Conta | undefined = contas.find((item) => item.nome === nomeDestinatario && 
+          item.cpf === cpfDestinatario) ;
+          if (!contaDestinatario) {
+            errorCode = 404;
+            throw new Error("Conta do destinatário não foi encontrada");
+          }
+  
+        //Descontar valor do saldo do pagador 
+        const saldoAtualPag:Conta={
+            ... contaPagador, saldo: contaPagador.saldo - valorTransferido
+        }
+        if(!saldoAtualPag){
+            throw new Error ("Erro ao atualizar seu saldo")
+        }
+
+        //Adicionar valor ao saldo do destinatário
+        const saldoAtualDes:Conta={
+            ... contaDestinatario, saldo: contaDestinatario.saldo + valorTransferido
+        }
+        if(!saldoAtualDes){
+            throw new Error ("Erro ao atualizar saldo do destinatário")
+        }
+       
+        //atualizando contas
+        const contasAtualizadas : Conta[] = [... contas, saldoAtualDes, saldoAtualDes]
+        
+        //precisa remover as contas antes de serem atualizadas?
+        res.status(200).send(contasAtualizadas);
+
+    }catch (error: any) {
+        res.status(errorCode).send({ message: error.message });
+    }   
 })
 
 app.listen(3003, () => {
