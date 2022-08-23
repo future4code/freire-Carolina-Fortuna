@@ -134,5 +134,20 @@ VALUES(
 );
 
     
-  
+  - Exercício 6
+    
+    Escreva uma query que:
+    
+    a) Retorne o id, título e avaliação a partir de um id específico;
+    SELECT id, nome, nota FROM Filmes
+    WHERE  id = '001';
+
+
+    b) Retorne um filme a partir de um nome específico;
+    SELECT * FROM Filmes
+    WHERE  nome = 'Dona Flor e Seus Dois Maridos';
+    
+    c) Retorne o id, título e sinopse dos filmes com avaliação mínima de `7`
+    SELECT id, nome, sinopse FROM Filmes
+    WHERE  nota > 7;
     
