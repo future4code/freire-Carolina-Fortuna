@@ -1,7 +1,7 @@
-import { recipe } from '../types';
+
 import { Request, Response } from "express"
 import { connection } from "../data/connection"
-import selectAllUsers from "./querrys"
+
 import { user } from "../types"
 
 export const getUsersByName = async(req: Request,res: Response): Promise<void> =>{

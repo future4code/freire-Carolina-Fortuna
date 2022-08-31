@@ -6,6 +6,7 @@ import { AddressInfo } from "net"
 import { getUsersByName } from "./endpoints/getUsersByName";
 import { getUsersByOrder } from './endpoints/getUsersByOrder';
 import { getUsersLimit } from "./endpoints/getUsersLimit";
+import {getUsersFiltered} from "./endpoints/getUsersFiltered"
 
 export const app = express()
 
@@ -13,15 +14,19 @@ app.use(express.json())
 app.use(cors())
 
 
-app.get("/recipes", getAllRecipes)
+ app.get("/recipes", getAllRecipes)
 
 app.get("/users/name", getUsersByName)
 
-app.get("/users/:type", getUsersByTypea)
 
-app.get("/users/limit", getUsersLimit)
+
+app.get("/users/limit/", getUsersLimit)
 
 app.get("/users/order", getUsersByOrder)
+
+app.get("/users/filtered", getUsersFiltered)
+
+app.get("/users/:type", getUsersByTypea)
 
 const server = app.listen(process.env.PORT || 3003, () => {
    if (server) {
