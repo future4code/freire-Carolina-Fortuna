@@ -1,12 +1,28 @@
-// dentro do index.ts, fazer importações e ativar o Express e Cors.
+import app from "./app"
+import createProducts from "./endpoints/createProducts"
+import createUser from "./endpoints/createUser"
+// import deleteCharacter from "./endpoints/deleteCharacter"
+import getAllUsers from "./endpoints/getAllUsers"
+import getAllProducts from "./endpoints/getAllProducts"
+import createPurchases from "./endpoints/createPurchases"
+import getPurchaseByUser from "./endpoints/getPurchaseByUser"
 
-import express, {Express} from 'express'
-import cors from 'cors'
 
-const app: Express = express();
 
-app.use(express.json());
-app.use(cors());
 
-// a função express() inicia a aplicação web com express
-// os .use() ativam os módulos de Bodyparser e Cors
+app.post("/users", createUser)
+
+app.get("/users", getAllUsers)
+
+app.post("/products", createProducts)
+
+app.get("/products", getAllProducts)
+
+app.post("/purchases", createPurchases)
+
+app.get("/users/:user_id/purchases", getPurchaseByUser)
+
+// app.get("/movie/:id/characters")
+
+
+// app.delete("/movies")
