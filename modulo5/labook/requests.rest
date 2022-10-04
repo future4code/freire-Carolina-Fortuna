@@ -6,9 +6,9 @@ POST http://localhost:3003/users/signup
 Content-Type: application/json
 
 {
-    "name": "Dep aula",
-    "email": "auladep@gmail.com",
-    "password": "abc123"
+    "name": "Nicki minaj",
+    "email": "nikkitheninja@gmail.com",
+    "password": "romanreloaded"
 }
 
 ### 2) Login
@@ -35,4 +35,14 @@ Content-Type: application/json
 
 {
     "name": "Astrodev3"
+}
+
+### 5) Create Post
+
+POST http://localhost:3003/post/create
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIwMzM3NWRkLThiMzItNGU1My04NWViLWViYTkxNDQzZmIzZSIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NjAwNTI2NDEsImV4cCI6MTY2MDEzOTA0MX0.jOF6vSbGc8AuQAf82UJ1bKC_Xle9YNuKYl3SRFh2Ex0
+
+{
+    "content": "Olá"
 }

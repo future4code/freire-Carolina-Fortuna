@@ -27,7 +27,7 @@ export class LikesDatabase extends BaseDatabase {
             .insert(userDB)
     }
 
-    public getLikes = async (input: IGetLikesDBDTO) => {
+    public getLikes = async (input: any) => {
         const search = input.search
         const order = input.order
         const sort = input.sort

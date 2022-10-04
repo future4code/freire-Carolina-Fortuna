@@ -7,8 +7,6 @@ import { HashManager } from '../services/HashManager'
 import { IdGenerator } from '../services/IdGenerator'
 
 export const userRouter = Router()
-//antes 
-//const userController = new UserController()
 
 const userController = new UserController(
     new UserBusiness(

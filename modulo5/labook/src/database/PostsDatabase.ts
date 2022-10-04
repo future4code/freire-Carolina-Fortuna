@@ -1,76 +1,86 @@
-import { IGetPostsDBDTO, IPostDB, Post} from "../models/Post"
+import { ILikeDB, IPostDB, Post} from "../models/Post"
 import { BaseDatabase } from "./BaseDatabase"
 
 export class PostsDatabase extends BaseDatabase {
-    public static Labook_Posts = "Arq_Posts"
+    public static TABLE_POST = "Labook_Posts"
+    public static TABLE_LIKES = "Labook_Likes"
 
-    public findByEmail = async (email: string) => {
-        const postsDB: IPostDB[] = await BaseDatabase
-            .connection(PostsDatabase.Labook_Posts)
-            .select()
-            .where({ email })
+    private postModel = (post:Post):IPostDB =>{
+        const postDB: IPostDB = {
+            id: post.getId(),
+            content: post.getContent(),
+            user_id: post.getUser_id()
+        }
 
-        return postsDB[0]
-    }
+        return postDB
+    } 
 
     public createPost = async (post: Post) => {
-        const postDB: IPostDB = {
-            id: post.getId(),
-            content: post.getContent(),
-            user_id: post.getUser_id(),
-            likes: post.getLikes()
-        }
+        const postDB = this.postModel(post)
 
         await BaseDatabase
-            .connection(PostsDatabase.Labook_Posts)
-            .insert(postDB)
+        .connection(PostsDatabase.TABLE_POST)
+        .insert(postDB)
     }
 
-    public getPosts = async (input: IGetPostsDBDTO) => {
-        const search = input.search
-        const order = input.order
-        const sort = input.sort
-        const limit = input.limit
-        const offset = input.offset
+    public getPosts = async ()=>{
+        const result = await BaseDatabase
+        .connection(PostsDatabase.TABLE_POST)
+        .select("*")
 
-        const postsDB: IPostDB[] = await BaseDatabase
-            .connection(PostsDatabase.Labook_Posts)
-            .select()
-            .where("name", "LIKE", `%${search}%`)
-            .orderBy(order, sort)
-            .limit(limit)
-            .offset(offset)
-        
-        return postsDB
+        return result
     }
 
-    public findById = async (id: string) => {
-        const postsDB: IPostDB[] = await BaseDatabase
-            .connection(PostsDatabase.Labook_Posts)
-            .select()
-            .where({ id })
+    
 
-        return postsDB[0]
+
+    public getLikes = async (postId: string) => {
+            const result: any = await BaseDatabase
+                .connection(PostsDatabase.TABLE_LIKES)
+                .select()
+                .count("id AS likes")
+                .where({ post_id: postId })
+
+            return result[0].likes as number
     }
 
-    public deletePost = async (id: string) => {
-        await BaseDatabase
-            .connection(PostsDatabase.Labook_Posts)
-            .delete()
-            .where({ id })
+    public findPostById = async (postId: string) => {
+            const postsDB: IPostDB[] = await BaseDatabase
+                .connection(PostsDatabase.TABLE_POST)
+                .select()
+                .where({ id: postId })
+
+            return postsDB[0]
     }
 
-    public editPost = async (post: Post) => {
-        const postDB: IPostDB = {
-            id: post.getId(),
-            content: post.getContent(),
-            user_id: post.getUser_id(),
-            likes: post.getLikes()
-        }
-        
-        await BaseDatabase
-            .connection(PostsDatabase.Labook_Posts)
-            .update(postDB)
-            .where({ id: postDB.id })
+    public deletePost = async (postId: string) => {
+            await BaseDatabase
+                .connection(PostsDatabase.TABLE_POST)
+                .delete()
+                .where({ id: postId })
     }
-}
+
+    public findLike = async (postId: string, userId: string) => {
+            const likesDB: ILikeDB[] = await BaseDatabase
+                .connection(PostsDatabase.TABLE_LIKES)
+                .select()
+                .where({ post_id: postId })
+                .andWhere({ user_id: userId })
+
+            return likesDB[0]
+    }
+
+    public addLike = async (likeDB: ILikeDB) => {
+            await BaseDatabase
+                .connection(PostsDatabase.TABLE_LIKES)
+                .insert(likeDB)
+    }
+
+    public removeLike = async (postId: string, userId: string) => {
+            await BaseDatabase
+                .connection(PostsDatabase.TABLE_LIKES)
+                .delete()
+                .where({ post_id: postId })
+                .andWhere({ user_id: userId })
+    }
+ }

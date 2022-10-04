@@ -36,7 +36,7 @@ export class UserController {
 
             res.status(200).send(response)
         } catch (error) {
-            res.status(400).send({ message: error.message })
+            res.status(error.statusCode || 500).send({ message: error.message })
         }
     }
 

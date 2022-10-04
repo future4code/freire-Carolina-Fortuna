@@ -3,7 +3,6 @@ export interface IPostDB {
     id: string,
     content: string,
     user_id: string,
-    likes: number,
 }
 
 
@@ -32,33 +31,38 @@ export class Post {
     }
 
 
-    // public setId = (newId: string) => {
-    //     this.id = newId
-    // }
+    public setId = (newId: string) => {
+        this.id = newId
+    }
 
-    // public setName = (newName: string) => {
-    //     this.name = newName
-    // }
+    public setContent = (newContent: string) => {
+        this.content = newContent
+    }
 
-    // public setEmail = (newEmail: string) => {
-    //     this.email = newEmail
-    // }
+    public setUserId = (newUserId: string) => {
+        this.user_id = newUserId
+    }
 
-    // public setPassword = (newPassword: string) => {
-    //     this.password = newPassword
-    // }
+    public setLikes = (newLikes: number) => {
+        this.likes = newLikes
+    }
 
 }
 
-export interface ISignupInputDTO {
-    name: string,
-    email: string,
-    password: string
+export interface ILikeDB {
+    id: string,
+    post_id: string,
+    user_id: string
 }
 
-export interface ILoginInputDTO {
-    email: string,
-    password: string
+export interface ICreatePostInputDTO {
+    token: string,
+    content: string
+}
+
+export interface ICreatePostOutputDTO {
+    message: string,
+    post: Post
 }
 
 export interface IGetPostsInputDTO {
@@ -70,33 +74,33 @@ export interface IGetPostsInputDTO {
     page: string
 }
 
-export interface IGetPostsPost {
-    id: string,
-    name: string,
-    email: string
-}
-
 export interface IGetPostsOutputDTO {
-    posts: IGetPostsPost[]
+    posts: Post[]
 }
 
-export interface IDeleteUserInputDTO {
+export interface IDeletePostInputDTO {
     token: string,
-    idToDelete: string
+    postId: string
 }
 
-export interface IGetPostsDBDTO {
-    search: string,
-    order: string,
-    sort: string,
-    limit: number,
-    offset: number
+export interface IDeletePostOutputDTO {
+    message: string
 }
 
-export interface IEditUserInputDTO {
+export interface IAddLikeInputDTO {
     token: string,
-    idToEdit: string,
-    name: string,
-    email: string,
-    password: string
+    postId: string
+}
+
+export interface IAddLikeOutputDTO {
+    message: string
+}
+
+export interface IRemoveLikeInputDTO {
+    token: string,
+    postId: string
+}
+
+export interface IRemoveLikeOutputDTO {
+    message: string
 }

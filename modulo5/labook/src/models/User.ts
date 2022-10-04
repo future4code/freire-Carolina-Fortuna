@@ -67,47 +67,18 @@ export interface ISignupInputDTO {
     password: string
 }
 
+export interface ISignupOutputDTO {
+    message: string,
+    token: string
+}
+
 export interface ILoginInputDTO {
     email: string,
     password: string
 }
 
-export interface IGetUsersInputDTO {
-    token: string,
-    search: string,
-    order: string,
-    sort: string,
-    limit: string,
-    page: string
+export interface ILoginOutputDTO {
+    message: string,
+    token: string
 }
 
-export interface IGetUsersUser {
-    id: string,
-    name: string,
-    email: string
-}
-
-export interface IGetUsersOutputDTO {
-    users: IGetUsersUser[]
-}
-
-export interface IDeleteUserInputDTO {
-    token: string,
-    idToDelete: string
-}
-
-export interface IGetUsersDBDTO {
-    search: string,
-    order: string,
-    sort: string,
-    limit: number,
-    offset: number
-}
-
-export interface IEditUserInputDTO {
-    token: string,
-    idToEdit: string,
-    name: string,
-    email: string,
-    password: string
-}

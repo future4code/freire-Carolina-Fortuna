@@ -2,28 +2,33 @@ import { IGetUsersDBDTO, IUserDB, User } from "../models/User"
 import { BaseDatabase } from "./BaseDatabase"
 
 export class UserDatabase extends BaseDatabase {
-    public static Labook_Users = "Arq_Users"
+   public static TABLE_USERS = "Labook_Users"
+  
+   private UserModelDB = (user:User) =>{
+    const userDB: IUserDB = {
+        id: user.getId(),
+        name: user.getName(),
+        email: user.getEmail(),
+        password: user.getPassword(),
+        role: user.getRole()
+    }
+         return userDB
+   }
 
-    public findByEmail = async (email: string) => {
+   public findByEmail = async (email: string) => {
         const usersDB: IUserDB[] = await BaseDatabase
-            .connection(UserDatabase.Labook_Users)
-            .select()
+            .connection(UserDatabase.TABLE_USERS)
+            .select("*")
             .where({ email })
 
         return usersDB[0]
     }
 
     public createUser = async (user: User) => {
-        const userDB: IUserDB = {
-            id: user.getId(),
-            name: user.getName(),
-            email: user.getEmail(),
-            password: user.getPassword(),
-            role: user.getRole()
-        }
+       const userDB = this.UserModelDB(user)
 
         await BaseDatabase
-            .connection(UserDatabase.Labook_Users)
+            .connection(UserDatabase.TABLE_USERS)
             .insert(userDB)
     }
 
@@ -35,7 +40,7 @@ export class UserDatabase extends BaseDatabase {
         const offset = input.offset
 
         const usersDB: IUserDB[] = await BaseDatabase
-            .connection(UserDatabase.Labook_Users)
+            .connection(UserDatabase.TABLE_USERS)
             .select()
             .where("name", "LIKE", `%${search}%`)
             .orderBy(order, sort)
@@ -47,7 +52,7 @@ export class UserDatabase extends BaseDatabase {
 
     public findById = async (id: string) => {
         const usersDB: IUserDB[] = await BaseDatabase
-            .connection(UserDatabase.Labook_Users)
+            .connection(UserDatabase.TABLE_USERS)
             .select()
             .where({ id })
 
@@ -56,7 +61,7 @@ export class UserDatabase extends BaseDatabase {
 
     public deleteUser = async (id: string) => {
         await BaseDatabase
-            .connection(UserDatabase.Labook_Users)
+            .connection(UserDatabase.TABLE_USERS)
             .delete()
             .where({ id })
     }
@@ -71,7 +76,7 @@ export class UserDatabase extends BaseDatabase {
         }
         
         await BaseDatabase
-            .connection(UserDatabase.Labook_Users)
+            .connection(UserDatabase.TABLE_USERS)
             .update(userDB)
             .where({ id: userDB.id })
     }
